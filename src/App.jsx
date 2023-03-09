@@ -1,34 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import Header from "./component/Header";
+import Form from "./component/Form";
+import { useState } from "react";
+import Error from "./component/Error";
+import Favorite from "./component/Favorite";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [firstName, setFirstName] = useState("");
+  const [carBrandName, setCarBrandName] = useState("");
+  const [error, setError] = useState("");
+
+  function handleCar(firstName, carBrandName) {
+    const newName = firstName;
+    const newCarBrandName = carBrandName;
+    setFirstName(newName);
+    setCarBrandName(newCarBrandName);
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <div className="container">
+      <Header title="Carros" />
+      <Form
+        onError={() =>
+          setError("Por favor chequea que la información sea correcta")
+        }
+        onSubmit={handleCar}
+      />
+      <Error text={error} />
+      <hr />
+      <Favorite name={firstName} favorite={carBrandName} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

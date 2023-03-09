@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  margin-top: 20px;
+  padding: 20px;
+  width: auto;
+  align-self: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border: 2px solid #000;
+}
+
+h1 {
+  font-size: 30px;
+  color: #333;
+  margin-bottom: 30px;
+}
